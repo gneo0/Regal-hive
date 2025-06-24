@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   title: 'Products'
 }
 
-export default function Page({ searchParams }: { searchParams: ProductFilters }) {
+export default async function Page(props: { searchParams: Promise<ProductFilters> }) {
+  const searchParams = await props.searchParams;
   return (
     <section className="w-full border-b relative max-h-dvh min-h-[47rem] border-zinc-900 flex h-[calc(100dvh-3.5rem)]" >
       <ProductsFiltersNav />

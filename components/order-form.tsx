@@ -1,6 +1,6 @@
 'use client';
+import { useActionState } from "react";
 
-import { useFormState } from "react-dom";
 import { UserMetadata } from "@supabase/supabase-js";
 
 import OrderFormBtn from "./ui/order-form-btn";
@@ -14,7 +14,7 @@ import { initialFormState } from "@/utils/constants";
 
 export default function OrderForm({ user }: { user: UserMetadata | undefined }) {
   const { cartAmount } = useCart()
-  const [state, formAction] = useFormState(placeOrder, initialFormState);
+  const [state, formAction] = useActionState(placeOrder, initialFormState);
 
   useToastFeedback(state)
 

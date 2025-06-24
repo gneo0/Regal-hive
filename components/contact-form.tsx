@@ -1,6 +1,6 @@
 'use client';
+import { useActionState } from "react";
 
-import { useFormState } from "react-dom";
 import { UserMetadata } from "@supabase/supabase-js";
 
 import ContactFormBtn from "./ui/contact-form-btn";
@@ -12,7 +12,7 @@ import { useToastFeedback } from "@/hooks/useToastFeedback";
 import { initialFormState } from "@/utils/constants";
 
 export default function ContactForm({ user }: { user: UserMetadata | undefined }) {
-  const [state, formAction] = useFormState(sendContactEmail, initialFormState);
+  const [state, formAction] = useActionState(sendContactEmail, initialFormState);
 
   useToastFeedback(state)
   

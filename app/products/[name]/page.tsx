@@ -4,10 +4,11 @@ import ProductSloganContainer from "@/components/product-slogan-container"
 import { getProduct, getProducts } from "@/utils/supabase/data"
 
 type Params = {
-  params: { name: string }
+  params: Promise<{ name: string }>
 }
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata(props: Params) {
+  const params = await props.params;
   return {
     title: params.name
   }
@@ -19,7 +20,8 @@ export async function generateStaticParams() {
   return products.map((product) => ({ name: product.name }))
 }
 
-export default async function Page({ params }: Params) {
+export default async function Page(props: Params) {
+  const params = await props.params;
   const selectedProduct = await getProduct(params.name);
 
   if (!selectedProduct) return notFound({ name: params.name });

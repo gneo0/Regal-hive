@@ -1,6 +1,5 @@
 'use client';
-
-import { useFormState } from "react-dom"
+import { useActionState } from "react";
 
 import FormInput from "./ui/form-input";
 import AccessibilityFormMsg from "./ui/accessibility-form-msg";
@@ -11,7 +10,7 @@ import { useToastFeedback } from "@/hooks/useToastFeedback";
 import { initialFormState } from "@/utils/constants";
 
 export default function LoginForm() {
-  const [state, loginAction] = useFormState(login, initialFormState)
+  const [state, loginAction] = useActionState(login, initialFormState)
 
   useToastFeedback(state)
 

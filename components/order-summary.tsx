@@ -1,6 +1,5 @@
 'use client';
-
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 
 import CouponForm from "./coupon-form";
 import PricingDetails from "./ui/pricing-details";
@@ -15,7 +14,7 @@ const initialState: CouponFormPrevState = {
 }
 
 export default function OrderSummary() {
-  const [state, couponAction] = useFormState(applyCoupon, initialState);
+  const [state, couponAction] = useActionState(applyCoupon, initialState);
 
   useToastFeedback(state)
 
