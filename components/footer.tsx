@@ -4,7 +4,7 @@ import ContactForm from "@/components/contact-form";
 import { createClientServer } from "@/utils/supabase/server";
 
 export default async function Footer() {
-  const supabase = createClientServer();
+  const supabase = await createClientServer();
   const { data: { user } } = await supabase.auth.getUser();
 
   return (

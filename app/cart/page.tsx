@@ -5,7 +5,7 @@ import CartContainer from "@/components/cart-container";
 import { createClientServer } from "@/utils/supabase/server";
 
 export default async function Page() {
-  const supabase = createClientServer();
+  const supabase = await createClientServer();
   const { data: { user } } = await supabase.auth.getUser();
 
   return (

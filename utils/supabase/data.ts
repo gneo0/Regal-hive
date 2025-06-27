@@ -78,7 +78,7 @@ export const getProduct = async (name: string) => {
 };
 
 export const getCartItems = async () => {
-	const supabaseServer = createClientServer();
+	const supabaseServer = await createClientServer();
 
 	const { data, error } = await supabaseServer
 		.from('cart')
@@ -94,7 +94,7 @@ export const getCartItems = async () => {
 };
 
 export const addItemToCart = async (product: ProductProps) => {
-	const supabaseServer = createClientServer();
+	const supabaseServer = await createClientServer();
 
 	const { data: productExistsInCart } = await supabaseServer
 		.from('cart')
@@ -135,7 +135,7 @@ export const addItemToCart = async (product: ProductProps) => {
 };
 
 export const increaseQuantityDB = async (id: number) => {
-	const supabaseServer = createClientServer();
+	const supabaseServer = await createClientServer();
 
 	const { data: cartItem } = await supabaseServer
 		.from('cart')
@@ -158,7 +158,7 @@ export const increaseQuantityDB = async (id: number) => {
 };
 
 export const decreaseQuantityDB = async (id: number) => {
-	const supabaseServer = createClientServer();
+	const supabaseServer = await createClientServer();
 
 	const { data: cartItem } = await supabaseServer
 		.from('cart')
@@ -184,7 +184,7 @@ export const decreaseQuantityDB = async (id: number) => {
 };
 
 export const deleteCartItemDB = async (id: number) => {
-	const supabaseServer = createClientServer();
+	const supabaseServer = await createClientServer();
 
 	const { data, error } = await supabaseServer
 		.from('cart')

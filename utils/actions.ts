@@ -42,7 +42,7 @@ const aj = arcjet({
 });
 
 export const login = async (prevState: FormPrevState, formData: FormData) => {
-  const supabase = createClientServer();
+  const supabase = await createClientServer();
 
   const LoginFormSchema = z.object({
     email: z.string().email(),
@@ -73,7 +73,7 @@ export const login = async (prevState: FormPrevState, formData: FormData) => {
 };
 
 export const logout = async () => {
-  const supabase = createClientServer();
+  const supabase = await createClientServer();
 
   await supabase.auth.signOut();
 
@@ -82,7 +82,7 @@ export const logout = async () => {
 };
 
 export const signup = async (prevState: FormPrevState, formData: FormData) => {
-  const supabase = createClientServer();
+  const supabase = await createClientServer();
 
   const SignupSchema = z.object({
     fullName: z
@@ -142,7 +142,7 @@ export const applyCoupon = async (
   prevState: CouponFormPrevState,
   formData: FormData
 ) => {
-  const supabase = createClientServer();
+  const supabase = await createClientServer();
 
   const {
     data: { user },
